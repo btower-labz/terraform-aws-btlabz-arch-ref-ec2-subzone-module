@@ -20,7 +20,8 @@ resource "aws_route53_zone" "subzone" {
 
 resource "aws_route53_record" "parent" {
   zone_id = data.aws_route53_zone.parent.zone_id
-  name    = "test"
+  # Short name
+  name    = var.name
   type    = "NS"
   ttl     = "60"
   records = aws_route53_zone.subzone.name_servers
